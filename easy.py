@@ -54,3 +54,37 @@ _______________________________________
 Yes. The main function should invoke your function with a simple example.
 
 """
+
+
+def merge(first, second):
+    """
+    Merge two sorted list and sort it.
+
+    :param first: a pre-sorted list
+    :param second: a pre-sorted list
+    :precondition: first and second must be a list
+    :postcondition: merge two sorted list and sort it
+    :return: a sorted list
+
+    >>> some_list = [5, 8, 9, -7, 0]
+    >>> some_other_list = [10, -77, 1, 3, 20]
+    >>> merge(some_list, some_other_list)
+    [-77, -7, 0, 1, 3, 5, 8, 9, 10, 20]
+    >>> some_list = ["apple", "orange", "tamarind"]
+    >>> some_other_list = ["applesauce", "bread", "watermelon"]
+    >>> merge(some_list, some_other_list)
+    ['apple', 'applesauce', 'bread', 'orange', 'tamarind', 'watermelon']
+    """
+    new_list = sorted(first + second)
+    return new_list
+
+
+def main():
+    first = [1, 5, 9]
+    second = [-10, 44, 100]
+    sorted_merge = merge(first, second)
+    print(sorted_merge)
+
+
+if __name__ == '__main__':
+    main()
