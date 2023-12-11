@@ -49,3 +49,21 @@ _______________________________________
 Yes. The main function should invoke your function, so I can execute your code and examine zen_copy.txt
 
 """
+
+
+def zen():
+    with open('zen.txt') as file_object:
+        zen_copy_text = file_object.read()
+        zen_copy_list = zen_copy_text.split('.')
+        zen_copy_list = [sentence.strip() for sentence in zen_copy_list if sentence.strip()]
+        zen_copy_list.sort()
+        zen_copy = [str(index) + '. ' + str(value) for index, value in enumerate(zen_copy_list, 1)]
+        print(zen_copy)
+
+
+def main():
+    zen()
+
+
+if __name__ == "__main__":
+    main()
