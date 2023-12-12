@@ -67,3 +67,28 @@ _______________________________________
 Yes. The main function should contain the code in the examples to demo your code.
 
 """
+
+
+def denomination_registrar(denominations):
+    def change_maker(money):
+        times_100_money = money * 100
+        coin_list = []
+        for denomination in denominations:
+            denomination *= 100
+            coin_number = int(times_100_money // denomination)
+            times_100_money -= coin_number * denomination
+            coin_list.append(coin_number)
+        return coin_list
+
+    return change_maker
+
+
+def main():
+    canadian_denominations = (100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05)
+    canadian_change_maker = denomination_registrar(canadian_denominations)
+    canadian_breakdown = canadian_change_maker(66.53)
+    print(canadian_breakdown)
+
+
+if __name__ == '__main__':
+    main()
