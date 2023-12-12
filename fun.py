@@ -53,12 +53,23 @@ Yes. The main function should invoke your function, so I can execute your code a
 
 def zen():
     with open('zen.txt') as file_object:
-        zen_copy_text = file_object.read()
-        zen_copy_list = zen_copy_text.split('.')
-        zen_copy_list = [sentence.strip() for sentence in zen_copy_list if sentence.strip()]
-        zen_copy_list.sort()
-        zen_copy = [str(index) + '. ' + str(value) for index, value in enumerate(zen_copy_list, 1)]
-        print(zen_copy)
+        zen_copy_text = file_object.readlines()
+
+    saying = []
+    zen_copy = ''
+    for line in zen_copy_text:
+        if '.\n' in line:
+            saying.append(line)
+        else:
+            zen_copy += line
+    saying.sort()
+    saying_list = [str(index) + '. ' + str(value) for index, value in enumerate(saying, 1)]
+
+    for saying in saying_list:
+        zen_copy += saying
+
+    with open('zen_copy.txt', 'w') as output:
+        output.write(zen_copy)
 
 
 def main():
